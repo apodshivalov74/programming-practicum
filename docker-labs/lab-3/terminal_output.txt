@@ -1,0 +1,100 @@
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker run -d --name registry -p 5000:5000 --restart=always registry:2
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+6d464ea18732: Pull complete 
+8e82f80af0de: Pull complete 
+44cf07d57ee4: Pull complete 
+3493bf46cdec: Pull complete 
+bbbdd6c6894b: Pull complete 
+32a76c78501f: Download complete 
+b537bf6d1146: Download complete 
+Digest: sha256:a3d8aaa63ed8681a604f1dea0aa03f100d5895b6a58ace528858a7b332415373
+Status: Downloaded newer image for registry:2
+d5312b9800029a64bc1efa29e36bd58603246f4c8f566e126bf26089c164c295
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+d5312b980002   registry:2   "/entrypoint.sh /etc…"   22 seconds ago   Up 22 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   registry
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker tag nginx:alpine localhost:5000/my-nginx:1.0
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker push localhost:5000/my-nginx:1.0
+The push refers to repository [localhost:5000/my-nginx]
+873bdb7a78a1: Pushed 
+fb08ee61b60d: Pushed 
+e2de96513ba9: Pushed 
+ce3e77cbba4d: Pushed 
+cb2f2cc9a341: Pushed 
+f408df9a891a: Pushed 
+90de1d15efe2: Pushed 
+c0ac6b3b9c77: Pushed 
+1.0: digest: sha256:7396be67b6f53012a5cf955fa9040619294c25ccacf11e22af5de1b572fc756e size: 2495
+
+i Info → Not all multiplatform-content is present and only the available single-platform image was pushed
+         sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4ac8 -> sha256:7396be67b6f53012a5cf955fa9040619294c25ccacf11e22af5de1b572fc756e
+PS D:\MIDiS\Docker\docker-labs\lab-3> curl http://localhost:5000/v2/_catalog
+
+Предупреждение безопасности: риск выполнения сценария
+Invoke-WebRequest анализирует содержимое веб-страницы. При анализе страницы может выполняться код сценария на веб-странице.
+      РЕКОМЕНДУЕМОЕ ДЕЙСТВИЕ:
+      Используйте параметр -UseBasicParsing, чтобы предотвратить выполнение кода сценария.
+
+      Продолжить?
+    
+[Y] Да - Y  [A] Да для всех - A  [N] Нет - N  [L] Нет для всех - L  [S] Приостановить - S  [?] Справка (значением по умолчанию является "N"): n
+curl : Операция отменена из-за проблем с безопасностью. Используйте параметр -UseBasicParsing для безопасного анализа HTML без выполнения сценария.
+строка:1 знак:1
++ curl http://localhost:5000/v2/_catalog
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : Ошибка безопасности: (http://localhost:5000/v2/_catalog:Uri) [Invoke-WebRequest], InvalidOperationException
+    + FullyQualifiedErrorId : WebCmdletIEParsingDeclined,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+ 
+PS D:\MIDiS\Docker\docker-labs\lab-3> curl.exe http://localhost:5000/v2/_catalog
+{"repositories":["my-nginx"]}
+PS D:\MIDiS\Docker\docker-labs\lab-3> curl.exe http://localhost:5000/v2/my-nginx/tags/list
+{"name":"my-nginx","tags":["1.0"]}
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker login
+
+USING WEB-BASED LOGIN
+
+i Info → To sign in with credentials on the command line, use 'docker login -u <username>'
+         
+
+Your one-time device confirmation code is: CLHV-LNBQ
+Press ENTER to open your browser or submit your device code here: https://login.docker.com/activate
+
+Waiting for authentication in the browser…
+failed waiting for authentication: Global rate limit exceeded
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker login -u apodshivalov74
+
+i Info → A Personal Access Token (PAT) can be used instead.
+         To create a PAT, visit https://app.docker.com/settings
+         
+         
+Password: 
+
+Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker login -u apodshivalov74
+
+i Info → A Personal Access Token (PAT) can be used instead.
+         To create a PAT, visit https://app.docker.com/settings
+         
+         
+Password: 
+
+Login Succeeded
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker tag nginx:alpine apodshivalov74/my-nginx:1.0
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker push apodshivalov74/my-nginx:1.0
+The push refers to repository [docker.io/apodshivalov74/my-nginx]
+873bdb7a78a1: Mounted from library/nginx 
+e2de96513ba9: Mounted from library/nginx 
+ce3e77cbba4d: Mounted from library/nginx 
+fb08ee61b60d: Mounted from library/nginx 
+cb2f2cc9a341: Mounted from library/nginx 
+f408df9a891a: Mounted from library/nginx 
+c0ac6b3b9c77: Mounted from library/nginx 
+90de1d15efe2: Mounted from library/nginx 
+1.0: digest: sha256:7396be67b6f53012a5cf955fa9040619294c25ccacf11e22af5de1b572fc756e size: 2495
+
+i Info → Not all multiplatform-content is present and only the available single-platform image was pushed
+         sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4ac8 -> sha256:7396be67b6f53012a5cf955fa9040619294c25ccacf11e22af5de1b572fc756e
+PS D:\MIDiS\Docker\docker-labs\lab-3> docker rm -f registry
+registry
+PS D:\MIDiS\Docker\docker-labs\lab-3>

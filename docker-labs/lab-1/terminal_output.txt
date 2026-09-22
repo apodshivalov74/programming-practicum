@@ -1,0 +1,347 @@
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker pull nginx:alpine
+alpine: Pulling from library/nginx
+90de1d15efe2: Pulling fs layer 
+90de1d15efe2: Pull complete 
+fb08ee61b60d: Pull complete 
+c0ac6b3b9c77: Pull complete 
+ce3e77cbba4d: Pull complete 
+e2de96513ba9: Pull complete 
+873bdb7a78a1: Pull complete 
+f408df9a891a: Pull complete 
+9d8ea080e87f: Download complete 
+ec6129a9436d: Download complete 
+Digest: sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4ac8
+Status: Downloaded newer image for nginx:alpine
+docker.io/library/nginx:alpine
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker pull alpine:latest
+latest: Pulling from library/alpine
+6d0606d1815c: Download complete 
+797dd00a0fc7: Download complete 
+Digest: sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+d1beffe63bc1   bridge    bridge    local
+7825711741b5   host      host      local
+53e47795ed44   none      null      local
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker volume ls
+DRIVER    VOLUME NAME
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker run -d --name web1 -p 8080:80 nginx:alpine
+ef6a9132a6686cbabdb8ee550ec1acb3b3dd4a6f7e3cfce2baab397ebb9f1800
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker run -d --name tools1 alpine:latest sleep 1d
+f85b0040b454608ed5145cfb5951999eebee7397d8ab8d71970cb18c65c89a9d
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+f85b0040b454   alpine:latest   "sleep 1d"               13 seconds ago   Up 12 seconds                                             tools1
+ef6a9132a668   nginx:alpine    "/docker-entrypoint.…"   32 seconds ago   Up 31 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network create lab-net
+227b578b6b70211c2403d65ddae377ebf0a3e622266f379752248c89861a0eda
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network connect lab-net web1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network connect lab-net tools1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec tools1 ping -c 4 web1
+PING web1 (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.274 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.210 ms
+64 bytes from 172.18.0.2: seq=2 ttl=64 time=0.316 ms
+64 bytes from 172.18.0.2: seq=3 ttl=64 time=0.236 ms
+
+--- web1 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.210/0.259/0.316 ms
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec tools1 wget -qO- http://web1
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network create --internal isolated-net
+24356b67286458a72865627b84f2f65edcc9de7be232c8757d546ff9fbef338c
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network connect isolated-net tools1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec tools1 sh -c "apk update"
+v3.24.2-12-gea90bdbb286 [https://dl-cdn.alpinelinux.org/alpine/v3.24/main]
+v3.24.2-13-gf27459a477f [https://dl-cdn.alpinelinux.org/alpine/v3.24/community]
+OK: 28649 distinct packages available
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker run -d --name tmpfs-demo   --tmpfs /app/tmp:rw,size=64m   alpine:latest sleep 1d
+c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker inspect tmpfs-demo
+[
+    {
+        "Id": "c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692",
+        "Created": "2026-09-22T11:24:09.905406363Z",
+        "Path": "sleep",
+        "Args": [
+            "1d"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 692,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-22T11:24:10.091736438Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6",
+        "ResolvConfPath": "/var/lib/docker/containers/c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692/hostname",
+        "HostsPath": "/var/lib/docker/containers/c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692/hosts",
+        "LogPath": "/var/lib/docker/containers/c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692/c0f6a0d68ed8089ff2106fa93268b24e4ffdf921520c708e4e5c78942b124692-json.log",
+        "Name": "/tmpfs-demo",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                24,
+                121
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "Tmpfs": {
+                "/app/tmp": "rw,size=64m"
+            },
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "c0f6a0d68ed8",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "sleep",
+                "1d"
+            ],
+            "Image": "alpine:latest",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "SandboxID": "7641bbf760b819feefac41874d261e6b981c2c01d346aa21e70c4a2fed72eead",
+            "SandboxKey": "/var/run/docker/netns/7641bbf760b8",
+            "Ports": {},
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "d1beffe63bc16fc54780837315c5d5f2cfbabf3c0f7a34411275f4c8955c841f",
+                    "EndpointID": "4e87f5abaf8e2e224e75b762b4c55cb166c18094264a926fd68c5720c4062f09",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.4",
+                    "MacAddress": "82:61:6c:88:21:9e",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:d56c381f961d307a21b3ca004cf1e3910f106644aefb1f43e654c8a56c4fd395",
+            "size": 1022,
+            "annotations": {
+                "com.docker.official-images.bashbrew.arch": "amd64",
+                "org.opencontainers.image.base.name": "scratch",
+                "org.opencontainers.image.created": "2026-09-17T20:36:57Z",
+                "org.opencontainers.image.revision": "1c744e2d49059e51b063a11a6e3e18c9ccf04ab8",
+                "org.opencontainers.image.source": "https://github.com/alpinelinux/docker-alpine.git#1c744e2d49059e51b063a11a6e3e18c9ccf04ab8:x86_64",
+                "org.opencontainers.image.url": "https://hub.docker.com/_/alpine",
+                "org.opencontainers.image.version": "3.24.2"
+            },
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec tmpfs-demo sh -c "mount | grep /app/tmp"
+tmpfs on /app/tmp type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker run -d --name writer   -v shared-data:/shared   alpine:latest sleep 1d
+cbe23a6d9fc241663b9972fd693c396203cc72d498917e365ae72ed38020cdab
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker run -d --name reader   -v shared-data:/shared   alpine:latest sleep 1d
+4bd3e24e240c3c4f56a610045b6cdc9b1745e475b018e838759c178e91e40f64
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec writer sh -c 'echo "Docker shared volume test" > /shared/info.txt'
+Docker
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec writer sh -c 'date > /shared/date.txt'
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec reader ls -la /shared
+total 12
+drwxr-xr-x    2 root     root          4096 Sep 22 11:25 .
+drwxr-xr-x    1 root     root          4096 Sep 22 11:24 ..
+-rw-r--r--    1 root     root            29 Sep 22 11:25 date.txt
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec reader cat /shared/info.txt
+cat: can't open '/shared/info.txt': No such file or directory
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec writer sh -c "echo 'Docker shared volume test' > /shared/info.txt"
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec reader cat /shared/info.txt
+Docker shared volume test
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec reader cat /shared/info.txt
+Docker shared volume test
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker volume inspect shared-data
+[
+    {
+        "CreatedAt": "2026-09-22T11:24:44Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/shared-data/_data",
+        "Name": "shared-data",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network disconnect bridge tools1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network disconnect lab-net tools1
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker exec tools1 sh -c "apk update"
+WARNING: updating https://dl-cdn.alpinelinux.org/alpine/v3.24/main/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+WARNING: updating https://dl-cdn.alpinelinux.org/alpine/v3.24/community/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+v3.24.2-12-gea90bdbb286 [https://dl-cdn.alpinelinux.org/alpine/v3.24/main]
+v3.24.2-13-gf27459a477f [https://dl-cdn.alpinelinux.org/alpine/v3.24/community]
+0 unavailable, 2 stale; 28649 distinct packages available
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker rm -f web1 tools1 tmpfs-demo writer reader
+web1
+tools1
+tmpfs-demo
+writer
+reader
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker network rm lab-net isolated-net
+lab-net
+isolated-net
+PS D:\MIDiS\Docker\docker-labs\lab-1> docker volume rm shared-data
+shared-data
+PS D:\MIDiS\Docker\docker-labs\lab-1> 

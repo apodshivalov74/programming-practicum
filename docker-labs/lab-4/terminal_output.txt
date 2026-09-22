@@ -1,0 +1,180 @@
+PS D:\MIDiS\Docker\docker-labs\lab-4> docker compose up --build
+[+] up 10/10
+ ✔ Image redis:7-alpine Pulled                                                                                      29.0s
+#1 [internal] load local bake definitions
+#1 reading from stdin 511B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 205B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 ...
+
+#4 [auth] library/python:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 3.2s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 555B 0.0s done
+#6 DONE 0.1s
+
+#7 [1/5] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+#7 resolve docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9 0.0s done
+#7 DONE 0.2s
+
+#7 [1/5] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+#7 sha256:06ad939ed42b51caafb25b14810875d14e0ee0c441d3e2e5e46475fb8c150bca 0B / 249B 0.2s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 0B / 12.12MB 0.2s
+#7 sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70 0B / 1.29MB 0.2s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 0B / 29.83MB 0.2s
+#7 sha256:06ad939ed42b51caafb25b14810875d14e0ee0c441d3e2e5e46475fb8c150bca 249B / 249B 0.5s
+#7 sha256:06ad939ed42b51caafb25b14810875d14e0ee0c441d3e2e5e46475fb8c150bca 249B / 249B 0.5s done
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 1.05MB / 12.12MB 1.7s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 2.10MB / 12.12MB 2.7s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 3.15MB / 12.12MB 4.2s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 4.19MB / 12.12MB 5.3s
+#7 sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70 0B / 1.29MB 5.3s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 0B / 29.83MB 5.3s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 5.24MB / 12.12MB 7.1s
+#7 sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70 1.05MB / 1.29MB 8.1s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 6.29MB / 12.12MB 9.5s
+#7 sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70 1.29MB / 1.29MB 10.0s done
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 1.05MB / 29.83MB 10.4s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 7.34MB / 12.12MB 10.7s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 8.39MB / 12.12MB 12.0s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 9.44MB / 12.12MB 13.4s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 10.49MB / 12.12MB 15.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 2.10MB / 29.83MB 15.5s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 11.53MB / 12.12MB 17.0s
+#7 sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 12.12MB / 12.12MB 18.0s done
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 4.19MB / 29.83MB 20.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 6.29MB / 29.83MB 23.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 8.39MB / 29.83MB 24.8s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 10.49MB / 29.83MB 26.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 12.58MB / 29.83MB 27.3s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 14.68MB / 29.83MB 28.2s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 16.78MB / 29.83MB 30.4s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 18.87MB / 29.83MB 32.1s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 20.97MB / 29.83MB 33.9s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 23.07MB / 29.83MB 35.1s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 25.17MB / 29.83MB 36.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 27.26MB / 29.83MB 38.3s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 29.36MB / 29.83MB 41.0s
+#7 sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 29.83MB / 29.83MB 41.4s done
+#7 extracting sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8
+#7 extracting sha256:6b37362b3da78869050b894b799ad4df04f1f3b52774087db0d81151570244c8 1.7s done
+#7 DONE 43.2s
+
+#7 [1/5] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+#7 extracting sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70
+#7 extracting sha256:3764a9a7d1e8a98213ab2201a41dbf3da9c60240ea35a5ea96ab994555070a70 0.3s done
+#7 DONE 43.5s
+
+#7 [1/5] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+#7 extracting sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0
+#7 extracting sha256:b0dc7f87bef15c2536cb182d6c48b52f90a0522884ec9eb222f833fa97ffebf0 0.9s done
+#7 DONE 44.4s
+
+#7 [1/5] FROM docker.io/library/python:3.12-slim@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+#7 extracting sha256:06ad939ed42b51caafb25b14810875d14e0ee0c441d3e2e5e46475fb8c150bca 0.0s done
+#7 DONE 44.4s
+
+#8 [2/5] WORKDIR /app
+#8 DONE 0.3s
+
+#9 [3/5] COPY requirements.txt .
+#9 DONE 0.0s
+
+#10 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+#10 3.131 Collecting Flask==3.0.3 (from -r requirements.txt (line 1))
+#10 3.925   Downloading flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
+#10 4.170 Collecting redis==5.0.4 (from -r requirements.txt (line 2))
+#10 4.321   Downloading redis-5.0.4-py3-none-any.whl.metadata (9.3 kB)
+#10 4.552 Collecting Werkzeug>=3.0.0 (from Flask==3.0.3->-r requirements.txt (line 1))
+#10 4.680   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+#10 4.827 Collecting Jinja2>=3.1.2 (from Flask==3.0.3->-r requirements.txt (line 1))
+#10 4.945   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#10 5.065 Collecting itsdangerous>=2.1.2 (from Flask==3.0.3->-r requirements.txt (line 1))
+#10 5.235   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#10 5.554 Collecting click>=8.1.3 (from Flask==3.0.3->-r requirements.txt (line 1))
+#10 5.717   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#10 5.844 Collecting blinker>=1.6.2 (from Flask==3.0.3->-r requirements.txt (line 1))
+#10 5.981   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#10 6.329 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->Flask==3.0.3->-r requirements.txt (line 1))
+#10 6.596   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#10 7.086 Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+#10 7.383 Downloading redis-5.0.4-py3-none-any.whl (251 kB)
+#10 7.780 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#10 7.923 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#10 8.273 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#10 8.406 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#10 8.634 Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+#10 8.971 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#10 9.029 Installing collected packages: redis, MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, Flask
+#10 9.969 Successfully installed Flask-3.0.3 Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.8 blinker-1.9.0 click-8.5.0 itsdangerous-2.2.0 redis-5.0.4
+#10 9.970 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#10 10.72 
+#10 10.72 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#10 10.72 [notice] To update, run: pip install --upgrade pip
+#10 DONE 11.0s
+
+#11 [5/5] COPY app.py .
+#11 DONE 0.1s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 1.1s done
+#12 exporting manifest sha256:b07082f6b7ff84d263a4c00f8889d30da73ede868e596213e6c6b469277d505d 0.0s done
+#12 exporting config sha256:e3cb6a0b3e24109e8c88628c551416fc8b79944f007c0fcd18c3982a7549b684 0.0s done
+#12 exporting attestation manifest sha256:549368fbcc053707f80845cea9c5ecac5ef515113d689d5e6baec2fce85dc014 0.0s done
+#12 exporting manifest list sha256:e4bdbbcd30dd34aff295432d7b7980ca0da67fe1f81d37054cefd3f836a798e5 0.0s done
+#12 naming to docker.io/library/lab-4-app:latest done
+#12 unpacking to docker.io/library/lab-4-app:latest
+#12 unpacking to docker.io/library/lab-4-app:latest 0.6s done
+#12 DONE 1.9s
+
+[+] up 14/14g provenance for metadata file
+ ✔ Image redis:7-alpine    Pulled                                                                                   29.0s
+ ✔ Image lab-4-app         Built                                                                                    61.8s
+ ✔ Network lab-4_back-tier Created                                                                                   0.1s
+ ✔ Container lab-4-redis-1 Created                                                                                   0.2s
+ ✔ Container lab-4-app-1   Created                                                                                   0.2s
+Attaching to app-1, redis-1
+redis-1  | 1:C 22 Sep 2026 13:13:54.378 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 22 Sep 2026 13:13:54.378 * Redis version=7.4.11, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 22 Sep 2026 13:13:54.378 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 22 Sep 2026 13:13:54.379 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 22 Sep 2026 13:13:54.382 * Running mode=standalone, port=6379.
+redis-1  | 1:M 22 Sep 2026 13:13:54.383 * Server initialized
+redis-1  | 1:M 22 Sep 2026 13:13:54.384 * Ready to accept connections tcp
+app-1    |  * Serving Flask app 'app'
+app-1    |  * Debug mode: off
+app-1    | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI serverinstead.
+app-1    |  * Running on all addresses (0.0.0.0)
+app-1    |  * Running on http://127.0.0.1:5000
+app-1    |  * Running on http://172.18.0.3:5000
+app-1    | Press CTRL+C to quit
+app-1    | 172.18.0.1 - - [22/Sep/2026 13:15:19] "GET / HTTP/1.1" 200 -
+app-1    | 172.18.0.1 - - [22/Sep/2026 13:15:19] "GET /favicon.ico HTTP/1.1" 404 -
+app-1    | 172.18.0.1 - - [22/Sep/2026 13:15:21] "GET / HTTP/1.1" 200 -
+app-1    | 172.18.0.1 - - [22/Sep/2026 13:16:53] "GET / HTTP/1.1" 200 -
+Gracefully Stopping... press Ctrl+C again to force
+Container lab-4-redis-1 Stopping 
+Container lab-4-app-1 Stopping 
+Container lab-4-redis-1 Stopped 
+Container lab-4-app-1 Stopped 
+
+PS D:\MIDiS\Docker\docker-labs\lab-4> docker compose down
+[+] down 3/3
+ ✔ Container lab-4-redis-1 Removed                                                                                   0.0s
+ ✔ Container lab-4-app-1   Removed                                                                                   0.1s
+ ✔ Network lab-4_back-tier Removed                                                                                   0.2s
+PS D:\MIDiS\Docker\docker-labs\lab-4> 

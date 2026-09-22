@@ -1,0 +1,351 @@
+PS D:\MIDiS\Docker\docker-labs\lab-2> node --version
+v24.18.0
+PS D:\MIDiS\Docker\docker-labs\lab-2> npm --version
+11.16.0
+PS D:\MIDiS\Docker\docker-labs\lab-2> npx create-react-app my-app
+Need to install the following packages:
+create-react-app@5.1.0
+Ok to proceed? (y) y
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated uid-number@0.0.6: This package is no longer supported.
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated fstream-ignore@1.0.5: This package is no longer supported.
+npm warn deprecated fstream@1.0.12: This package is no longer supported.
+npm warn deprecated tar@2.2.2: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+create-react-app is deprecated.
+
+You can find a list of up-to-date React frameworks on react.dev
+For more info see:https://react.dev/link/cra
+
+This error message will only be shown once per install.
+
+Creating a new React app in D:\MIDiS\Docker\docker-labs\lab-2\my-app.
+
+Installing packages. This might take a couple of minutes.
+Installing react, react-dom, and react-scripts with cra-template...
+
+
+added 1291 packages in 4m
+
+273 packages are looking for funding
+  run `npm fund` for details
+Git repo not initialized Error: Command failed: git --version
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execSync (node:child_process:997:15)
+    at tryGitInit (D:\MIDiS\Docker\docker-labs\lab-2\my-app\node_modules\react-scripts\scripts\init.js:46:5)
+    at module.exports (D:\MIDiS\Docker\docker-labs\lab-2\my-app\node_modules\react-scripts\scripts\init.js:276:7)
+    at [eval]:3:14
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24 {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 20476,
+  stdout: null,
+  stderr: null
+}
+
+Installing template dependencies using npm...
+
+added 17 packages, and removed 1 package in 10s
+
+272 packages are looking for funding
+  run `npm fund` for details
+npm warn allow-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   core-js@3.50.0 (install: (install scripts present))
+npm warn allow-scripts   core-js-pure@3.50.0 (install: (install scripts present))
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+Removing template package using npm...
+
+
+removed 1 package, and audited 1307 packages in 12s
+
+272 packages are looking for funding
+  run `npm fund` for details
+
+28 vulnerabilities (9 low, 5 moderate, 14 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm warn allow-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   core-js@3.50.0 (install: (install scripts present))
+npm warn allow-scripts   core-js-pure@3.50.0 (install: (install scripts present))
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+
+Success! Created my-app at D:\MIDiS\Docker\docker-labs\lab-2\my-app
+Inside that directory, you can run several commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd my-app
+  npm start
+
+Happy hacking!
+npm notice
+npm notice New major version of npm available! 11.16.0 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+PS D:\MIDiS\Docker\docker-labs\lab-2> cd my-app
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker build -t my-react-app:1.0 .
+[+] Building 53.1s (11/14)                                                                          docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.1s
+ => => transferring dockerfile: 323B                                                                                0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                     0.2s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                   4.0s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 106B                                                                                   0.0s
+ => [internal] load build context                                                                                   0.2s
+ => => transferring context: 685.79kB                                                                               0.2s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb  45.3s
+ => => resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f6093  0.0s
+ => => sha256:fff4e2c1b189bf87d63ad8bd07f7f4eb288d6f2b6a07a8bb44c60e8c075d2096 445B / 445B                          0.5s
+ => => sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122 1.26MB / 1.26MB                      2.5s
+ => => sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 43.23MB / 43.23MB                   42.8s
+ => => sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 3.86MB / 3.86MB                      6.4s
+ => => extracting sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb                           0.3s
+ => => extracting sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287                           2.1s
+ => => extracting sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122                           0.1s
+ => => extracting sha256:fff4e2c1b189bf87d63ad8bd07f7f4eb288d6f2b6a07a8bb44c60e8c075d2096                           0.0s
+ => [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5e  0.4s
+ => => resolve docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4  0.0s
+ => [stage-1 2/3] COPY myapp_nginx.conf /etc/nginx/conf.d/default.conf                                              0.0s
+ => [builder 2/6] WORKDIR /app                                                                                      0.1s
+ => [builder 3/6] COPY package*.json ./                                                                             0.0s
+ => ERROR [builder 4/6] RUN npm ci                                                                                  3.4s
+------
+ > [builder 4/6] RUN npm ci:
+3.301 npm error code EUSAGE
+3.301 npm error
+3.301 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+3.301 npm error
+3.301 npm error Missing: yaml@2.9.1 from lock file
+3.301 npm error
+3.301 npm error Clean install a project
+3.301 npm error
+3.301 npm error Usage:
+3.301 npm error npm ci
+3.301 npm error
+3.301 npm error Options:
+3.301 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+3.301 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+3.301 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+3.301 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+3.301 npm error [--no-bin-links] [--no-fund] [--dry-run]
+3.301 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+3.301 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+3.301 npm error
+3.301 npm error aliases: clean-install, ic, install-clean, isntall-clean
+3.301 npm error
+3.301 npm error Run "npm help ci" for more info
+3.305 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-09-22T12_09_45_447Z-debug-0.log
+------
+Dockerfile:4
+--------------------
+   2 |     WORKDIR /app
+   3 |     COPY package*.json ./
+   4 | >>> RUN npm ci
+   5 |     COPY . .
+   6 |     RUN npm run build
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+What's next:
+    Debug this build failure with Gordon → docker ai "help me fix this build failure"
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest   294b683cb724         13MB         3.94MB        
+nginx:alpine    62ff2089abf5       94.4MB         27.2MB        
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker build -t my-react-app:1.0 .
+[+] Building 4.7s (11/14)                                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.0s
+ => => transferring dockerfile: 323B                                                                                0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                     0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                   1.2s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 106B                                                                                   0.0s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8  0.0s
+ => => resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f6093  0.0s
+ => [internal] load build context                                                                                   0.0s
+ => => transferring context: 717B                                                                                   0.0s
+ => [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5e  0.0s
+ => => resolve docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4  0.0s
+ => CACHED [stage-1 2/3] COPY myapp_nginx.conf /etc/nginx/conf.d/default.conf                                       0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                                                               0.0s
+ => CACHED [builder 3/6] COPY package*.json ./                                                                      0.0s
+ => ERROR [builder 4/6] RUN npm ci                                                                                  3.2s
+------
+ > [builder 4/6] RUN npm ci:
+3.168 npm error code EUSAGE
+3.168 npm error
+3.168 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+3.168 npm error
+3.168 npm error Missing: yaml@2.9.1 from lock file
+3.168 npm error
+3.168 npm error Clean install a project
+3.168 npm error
+3.168 npm error Usage:
+3.168 npm error npm ci
+3.168 npm error
+3.168 npm error Options:
+3.168 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+3.168 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+3.168 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+3.168 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+3.168 npm error [--no-bin-links] [--no-fund] [--dry-run]
+3.168 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+3.168 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+3.168 npm error
+3.168 npm error aliases: clean-install, ic, install-clean, isntall-clean
+3.168 npm error
+3.168 npm error Run "npm help ci" for more info
+3.174 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-09-22T12_11_55_989Z-debug-0.log
+------
+Dockerfile:4
+--------------------
+   2 |     WORKDIR /app
+   3 |     COPY package*.json ./
+   4 | >>> RUN npm ci
+   5 |     COPY . .
+   6 |     RUN npm run build
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+What's next:
+    Debug this build failure with Gordon → docker ai "help me fix this build failure"
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest   294b683cb724         13MB         3.94MB        
+nginx:alpine    62ff2089abf5       94.4MB         27.2MB        
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker build -t my-react-app:1.0 .
+[+] Building 287.8s (13/14)                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.0s
+ => => transferring dockerfile: 328B                                                                                0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                   1.9s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                     0.1s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 106B                                                                                   0.0s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8  0.0s
+ => => resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f6093  0.0s
+ => [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5e  0.0s
+ => => resolve docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4  0.0s
+ => [internal] load build context                                                                                   0.0s
+ => => transferring context: 717B                                                                                   0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                                                               0.0s
+ => CACHED [builder 3/6] COPY package*.json ./                                                                      0.0s
+ => CACHED [stage-1 2/3] COPY myapp_nginx.conf /etc/nginx/conf.d/default.conf                                       0.0s
+ => [builder 4/6] RUN npm install                                                                                 284.0s
+ => [builder 5/6] COPY . .                                                                                          0.9s
+ => ERROR [builder 6/6] RUN npm run build                                                                           0.8s
+------
+ > [builder 6/6] RUN npm run build:
+0.682 
+0.682 > my-app@0.1.0 build
+0.682 > react-scripts build
+0.682 
+0.698 sh: react-scripts: not found
+------
+Dockerfile:6
+--------------------
+   4 |     RUN npm install
+   5 |     COPY . .
+   6 | >>> RUN npm run build
+   7 |     
+   8 |     FROM nginx:alpine
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+
+What's next:
+    Debug this build failure with Gordon → docker ai "help me fix this build failure"
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker build --no-cache -t my-react-app:1.0 .
+[+] Building 65.0s (15/15) FINISHED                                                                 docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                0.0s
+ => => transferring dockerfile: 373B                                                                                0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                     0.2s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                   1.6s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 106B                                                                                   0.0s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8  0.0s
+ => => resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f6093  0.0s
+ => [internal] load build context                                                                                   0.0s
+ => => transferring context: 789B                                                                                   0.0s
+ => CACHED [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675c  0.1s
+ => => resolve docker.io/library/nginx:alpine@sha256:62ff2089abf5a9ed33bd232895bef5e22f7bb4b200675cec49a5ebc48e3d4  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                                                               0.0s
+ => [stage-1 2/3] COPY myapp_nginx.conf /etc/nginx/conf.d/default.conf                                              0.1s
+ => [builder 3/6] COPY package*.json ./                                                                             0.1s
+ => [builder 4/6] RUN npm install                                                                                  46.8s
+ => [builder 5/6] COPY . .                                                                                          0.7s
+ => [builder 6/6] RUN npm run build                                                                                13.7s
+ => [stage-1 3/3] COPY --from=builder /app/build /usr/share/nginx/html                                              0.1s
+ => exporting to image                                                                                              0.5s
+ => => exporting layers                                                                                             0.2s
+ => => exporting manifest sha256:1739c125756e4cabb9702b65eba74c00a4d4d2a166f98dcf1e5384049ae22efb                   0.0s
+ => => exporting config sha256:964aa43459ff978939a5ebae143fe8df85ecac2c0798ea480c0cf7c4d80dae64                     0.0s
+ => => exporting attestation manifest sha256:52afce707766dd2cc50da0a166ef2dbb0e205b8db11df51600d61ff69f0d3906       0.0s
+ => => exporting manifest list sha256:a73f2aa34664b5ce2675f50848e80b29dcfd3832941c7f181819cca43a0af25c              0.0s
+ => => naming to docker.io/library/my-react-app:1.0                                                                 0.0s
+ => => unpacking to docker.io/library/my-react-app:1.0                                                              0.1s
+
+ 1 warning found (use docker --debug to expand):
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 7)
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker image
+Usage:  docker image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run 'docker image COMMAND --help' for more information on a command.
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker images
+                                                                                                     i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest      294b683cb724         13MB         3.94MB        
+my-react-app:1.0   a73f2aa34664       95.3MB         26.7MB        
+nginx:alpine       62ff2089abf5       94.4MB         27.2MB        
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker run -d --name react-app -p 8080:80 my-react-app:1.0
+2b059cf75840458e9df648a308fd871c838106f8eb5f69724d9b8ae174355fa5
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS             NAMES
+2b059cf75840   my-react-app:1.0   "/docker-entrypoint.…"   14 seconds ago   Up 13 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   react-app
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> docker rm -f react-app
+react-app
+PS D:\MIDiS\Docker\docker-labs\lab-2\my-app> 
